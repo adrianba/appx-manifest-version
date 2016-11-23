@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NotPackage
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  IgnorableNamespaces="uap">
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+
+</NotPackage>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  IgnorableNamespaces="uap">
+
+  <Identity
+    Name="Sample"
+    Publisher="CN=Ade Bateman" />
+
+  <Properties>
+    <DisplayName>Sample</DisplayName>
+    <PublisherDisplayName>Ade Bateman</PublisherDisplayName>
+    <Logo>appximages\storelogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+
+  <Applications>
+    <Application 
+      Id="App"
+      StartPage="index.html">
+
+      <uap:VisualElements
+        DisplayName="Sample"
+        Description="Sample"
+        BackgroundColor="transparent"
+        Square150x150Logo="appximages\Square150x150Logo.png"
+        Square44x44Logo="appximages\Square44x44Logo.png">
+
+        <uap:DefaultTile Wide310x150Logo="appximages\Wide310x150Logo.png" />
+        <uap:SplashScreen Image="appximages\splashscreen.png" />
+
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+
+</Package>
