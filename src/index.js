@@ -55,7 +55,6 @@ function incrementVersionFile(manifestPath,overwriteOriginal) {
         incrementVersion(res)
           .then(r => {
             if(overwriteOriginal) {
-              console.log(overwriteOriginal);
               // Need to write out the new manifest over the old one
               fs.writeFile(manifestPath,r.manifest,"utf8",function(err) {
                 if(err) {
