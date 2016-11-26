@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Tool to upgrade the version of an Appx Manifest file.",
   "main": "src/index.js",
+  "bin": {
+    "appx-version": "./src/commandLine.js"
+  },
   "scripts": {
     "test": "mocha"
   },

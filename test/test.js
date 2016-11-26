@@ -3,6 +3,7 @@
 const assert = require("assert");
 const path = require('path');
 const fs = require('fs-extra');
+const exec = require('child_process').exec;
 
 const versionUpdate = require("../src/index.js");
 
@@ -63,6 +64,31 @@ describe('Testing incrementVersion',function() {
       .catch(err => {
         fs.removeSync(path.join(__dirname,'testfiles/tmp.xml'));
         done(err);
+      });
+    });
+  });
+  it('should fail with command line if manifest is missing',function(done) {
+    var testCommand = "node " + path.join(__dirname,'../src/commandLine.js');
+    exec(testCommand, (err,stdout,stderr) => {
+      done(!err);
+    });
+  });
+  it('should work with command line',function(done) {
+    fs.copy(path.join(__dirname,'testfiles/valid.xml'),path.join(__dirname,'testfiles/tmp.xml'),function(err) {
+      assert.ifError(err);
+      var testCommand = "node " + path.join(__dirname,'../src/commandLine.js') + " " + path.join(__dirname,'testfiles/tmp.xml');
+      exec(testCommand, (err,stdout,stderr) => {
+        assert.ifError(err);
+        versionUpdate.incrementVersionFile(path.join(__dirname,'testfiles/tmp.xml'),true)
+        .then(data => {
+          assert.equal(data.version,"1.0.0.2");
+          fs.removeSync(path.join(__dirname,'testfiles/tmp.xml'));
+          done();
+        })
+        .catch(err => {
+          fs.removeSync(path.join(__dirname,'testfiles/tmp.xml'));
+          done(err);
+        });
       });
     });
   });
