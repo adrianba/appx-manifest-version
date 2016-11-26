@@ -46,14 +46,28 @@ function incrementVersion(manifestString) {
   });
 }
 
-function incrementVersionFile(manifestPath) {
+function incrementVersionFile(manifestPath,overwriteOriginal) {
   return new Promise((resolve,reject) => {
     fs.readFile(manifestPath,'utf8',function (err,res) {
       if(err) {
         reject({status:"readerror",details:err});
       } else {
         incrementVersion(res)
-          .then(r => { resolve(r); })
+          .then(r => {
+            if(overwriteOriginal) {
+              console.log(overwriteOriginal);
+              // Need to write out the new manifest over the old one
+              fs.writeFile(manifestPath,r.manifest,"utf8",function(err) {
+                if(err) {
+                  reject({status:"writeerror",details:"Unable to write new manifest"});
+                } else {
+                  resolve(r);
+                }
+              });
+            } else {
+              resolve(r);
+            }
+          })
           .catch(e => { reject(e); });
       }
     });

@@ -2,6 +2,7 @@
 
 const assert = require("assert");
 const path = require('path');
+const fs = require('fs-extra');
 
 const versionUpdate = require("../src/index.js");
 
@@ -44,6 +45,25 @@ describe('Testing incrementVersion',function() {
     return versionUpdate.incrementVersionFile(path.join(__dirname,'testfiles/valid.xml'))
     .then(data => {
       assert.equal(data.version,"1.0.0.1");
+    });
+  });
+  it('should work with valid manifest file and overwrite when requested',function(done) {
+    fs.copy(path.join(__dirname,'testfiles/valid.xml'),path.join(__dirname,'testfiles/tmp.xml'),function(err) {
+      assert.ifError(err);
+      versionUpdate.incrementVersionFile(path.join(__dirname,'testfiles/tmp.xml'),true)
+      .then(data => {
+        assert.equal(data.version,"1.0.0.1");
+        return versionUpdate.incrementVersionFile(path.join(__dirname,'testfiles/tmp.xml'));
+      })
+      .then(data => {
+        assert.equal(data.version,"1.0.0.2");
+        fs.removeSync(path.join(__dirname,'testfiles/tmp.xml'));
+        done();
+      })
+      .catch(err => {
+        fs.removeSync(path.join(__dirname,'testfiles/tmp.xml'));
+        done(err);
+      });
     });
   });
 });
