@@ -1,6 +1,6 @@
 {
   "name": "appx-manifest-version",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tool to upgrade the version of an Appx Manifest file.",
   "main": "src/index.js",
   "bin": {
@@ -20,7 +20,7 @@
     "version"
   ],
   "author": "Ade Bateman (https://adebateman.org/)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/adrianba/appx-manifest-version/issues"
   },
