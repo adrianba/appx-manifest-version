@@ -6,7 +6,7 @@ const path = require('path');
 const versionUpdate = require("../src/index.js");
 
 function testIncrementFail(testFile,expectedError) {
-  return versionUpdate.incrementVersion(path.join(__dirname,'testfiles/',testFile))
+  return versionUpdate.incrementVersionFile(path.join(__dirname,'testfiles/',testFile))
   .then(data => {
     assert(false,"incrementVersion should not succeed");
   })
@@ -34,10 +34,16 @@ describe('Testing incrementVersion',function() {
   it('should reject with formaterror if Version is missing',function() {
     return testIncrementFail('missingversion.xml','formaterror');
   });
+  it('should reject with versionerror if Version is single number',function() {
+    return testIncrementFail('badversion1.xml','versionerror');
+  });
+  it('should reject with versionerror if Version is not a number pattern',function() {
+    return testIncrementFail('badversion2.xml','versionerror');
+  });
   it('should work with valid manifest file',function() {
-    return versionUpdate.incrementVersion(path.join(__dirname,'testfiles/valid.xml'))
+    return versionUpdate.incrementVersionFile(path.join(__dirname,'testfiles/valid.xml'))
     .then(data => {
-      assert(true);
+      assert.equal(data.version,"1.0.0.1");
     });
   });
 });
