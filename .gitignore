@@ -1,2 +1,8 @@
+# Don't store the modules
 node_modules
+
+# Left over test file
 test/testfiles/tmp.xml
+
+# Test npm package file
+appx-manifest-version-*.tgz
