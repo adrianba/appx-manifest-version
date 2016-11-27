@@ -6,3 +6,6 @@ test/testfiles/tmp.xml
 
 # Test npm package file
 appx-manifest-version-*.tgz
+
+# JSDocs output
+out

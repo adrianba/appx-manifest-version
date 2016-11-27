@@ -7,7 +7,8 @@
     "appx-version": "./src/commandLine.js"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "jsdoc": "jsdoc src/index.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "fs-extra": "^1.0.0",
+    "jsdoc": "^3.4.3",
     "mocha": "^3.1.2"
   }
 }

@@ -3,6 +3,12 @@
 const fs = require('fs');
 const xml2js = require('xml2js');
 
+/**
+ * Find the last part of a version string (numbers after a period) and increment it.
+ * @param {string} versionString - The version string to increment.
+ * @returns Incremented version string.
+ * @private
+ */
 function increment(versionString) {
   const regex = /(.*\.)([0-9]+)$/;
   var match = regex.exec(versionString);
@@ -10,6 +16,23 @@ function increment(versionString) {
   return match[1] + (parseInt(match[2]) + 1);
 }
 
+/**
+ * @typedef ManifestResult
+ * @property version {string} New version string.
+ * @property manifest {string} Appx manifest xml file as string with updated version string.
+ */
+
+/**
+ * @typedef ManifestError
+ * @property status {string} Error status string.
+ * @property details {string} Details about error.
+ */
+
+/**
+ * Increment the version string in an Appx manifest provided as a string.
+ * @param {string} manifestString - A string containing the XML Appx manifest file.
+ * @returns {Promise<ManifestResult,ManifestError>} Promise that is resolved with the new manifest and version.
+ */
 function incrementVersion(manifestString) {
   return new Promise((resolve,reject) => {
     // Got file contents - now parse as XML
@@ -46,6 +69,14 @@ function incrementVersion(manifestString) {
   });
 }
 
+/**
+ * Load an Appx manifest from a file and increment the version number.
+ * Optionally write the manifest file back out and overwrite the original
+ * manifest file. Note that this will reformat the manifest file.
+ * @param {string} manifestPath - Path to Appx manifest xml file.
+ * @param {boolean} [overwriteOriginal] - true to write out the manifest over the original
+ * @returns {Promise<ManifestResult,ManifestError>} Promise that is resolved with the new manifest and version.
+ */
 function incrementVersionFile(manifestPath,overwriteOriginal) {
   return new Promise((resolve,reject) => {
     fs.readFile(manifestPath,'utf8',function (err,res) {
