@@ -83,11 +83,11 @@ describe('Testing incrementVersion',function() {
         .then(data => {
           assert.equal(data.version,"1.0.0.2");
           fs.removeSync(path.join(__dirname,'testfiles/tmp.xml'));
+          assert(false,"Testing Travis!");
           done();
         })
         .catch(err => {
           fs.removeSync(path.join(__dirname,'testfiles/tmp.xml'));
-          assert(false,"Testing Travis!");
           done(err);
         });
       });
