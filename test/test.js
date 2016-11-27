@@ -68,7 +68,7 @@ describe('Testing incrementVersion',function() {
     });
   });
   it('should fail with command line if manifest is missing',function(done) {
-    var testCommand = "node " + path.join(__dirname,'../src/commandLine.js');
+    var testCommand = "node " + path.join(__dirname,'../cmd/commandLine.js');
     exec(testCommand, (err,stdout,stderr) => {
       done(!err);
     });
@@ -76,7 +76,7 @@ describe('Testing incrementVersion',function() {
   it('should work with command line',function(done) {
     fs.copy(path.join(__dirname,'testfiles/valid.xml'),path.join(__dirname,'testfiles/tmp.xml'),function(err) {
       assert.ifError(err);
-      var testCommand = "node " + path.join(__dirname,'../src/commandLine.js') + " " + path.join(__dirname,'testfiles/tmp.xml');
+      var testCommand = "node " + path.join(__dirname,'../cmd/commandLine.js') + " " + path.join(__dirname,'testfiles/tmp.xml');
       exec(testCommand, (err,stdout,stderr) => {
         assert.ifError(err);
         versionUpdate.incrementVersionFile(path.join(__dirname,'testfiles/tmp.xml'),true)

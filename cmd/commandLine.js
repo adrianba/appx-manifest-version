@@ -9,7 +9,7 @@ if(process.argv.length<3) {
 
 const path = require('path');
 const fs   = require('fs');
-const src  = path.dirname(fs.realpathSync(__filename));
+const src  = path.join(path.dirname(fs.realpathSync(__filename)),'../src');
 const versionIncrement = require(src + "/index.js");
 
 const manifestPath = process.argv[2];
