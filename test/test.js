@@ -87,6 +87,7 @@ describe('Testing incrementVersion',function() {
         })
         .catch(err => {
           fs.removeSync(path.join(__dirname,'testfiles/tmp.xml'));
+          assert(false,"Testing Travis!");
           done(err);
         });
       });
