@@ -1,10 +1,15 @@
 # appx-manifest-version
 
-[![Build Status](https://travis-ci.org/adrianba/appx-manifest-version.svg?branch=master)](https://travis-ci.org/adrianba/appx-manifest-version) [![Coverage Status](https://coveralls.io/repos/github/adrianba/appx-manifest-version/badge.svg)](https://coveralls.io/github/adrianba/appx-manifest-version)
+[![Build Status](https://travis-ci.org/adrianba/appx-manifest-version.svg?branch=master)](https://travis-ci.org/adrianba/appx-manifest-version)
+[![Coverage Status](https://coveralls.io/repos/github/adrianba/appx-manifest-version/badge.svg)](https://coveralls.io/github/adrianba/appx-manifest-version)
+[![Dependency Status](https://david-dm.org/adrianba/appx-manifest-version.svg)](https://david-dm.org/adrianba/appx-manifest-version)
 
 Tool used to increment the version number of an `AppxManifest.xml` file.
 
 ## Installation
+
+The package is published to [npmjs.com](https://www.npmjs.com/package/appx-manifest-version).
+You can install with:
 
     npm install -g appx-manifest-version
 
