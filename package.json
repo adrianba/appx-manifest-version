@@ -7,7 +7,8 @@
     "appx-version": "./cmd/commandLine.js"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "istanbul cover node_modules/mocha/bin/_mocha",
+    "coveralls": "coveralls < coverage/lcov.info"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,9 @@
     "xml2js": "^0.4.17"
   },
   "devDependencies": {
+    "coveralls": "^2.11.15",
     "fs-extra": "^1.0.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.1.2"
   }
 }
