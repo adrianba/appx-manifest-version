@@ -1,6 +1,6 @@
 # appx-manifest-version
 
-[![Build Status](https://travis-ci.org/adrianba/appx-manifest-version.svg?branch=master)](https://travis-ci.org/adrianba/appx-manifest-version)
+[![Build Status](https://travis-ci.org/adrianba/appx-manifest-version.svg?branch=master)](https://travis-ci.org/adrianba/appx-manifest-version) [![Coverage Status](https://coveralls.io/repos/github/adrianba/appx-manifest-version/badge.svg)](https://coveralls.io/github/adrianba/appx-manifest-version)
 
 Tool used to increment the version number of an `AppxManifest.xml` file.
 
