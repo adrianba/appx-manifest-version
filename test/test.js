@@ -67,6 +67,25 @@ describe('Testing incrementVersion',function() {
       });
     });
   });
+  it('should work fail with writeerror with readonly manifest when overwrite is requested',function(done) {
+    var tempXml = path.join(__dirname,'testfiles/tmp.xml');
+    fs.copy(path.join(__dirname,'testfiles/valid.xml'),tempXml,function(err) {
+      assert.ifError(err);
+      fs.chmodSync(tempXml,'444');
+      versionUpdate.incrementVersionFile(tempXml,true)
+      .then(data => {
+        fs.chmodSync(tempXml,'666');
+        fs.removeSync(tempXml);
+        done('Unexpected success.');
+      })
+      .catch(e => {
+        assert.equal(e.status,"writeerror");
+        fs.chmodSync(tempXml,'666');
+        fs.removeSync(tempXml);
+        done();
+      });
+    });
+  });
   it('should fail with command line if manifest is missing',function(done) {
     var testCommand = "node " + path.join(__dirname,'../cmd/commandLine.js');
     exec(testCommand, (err,stdout,stderr) => {
