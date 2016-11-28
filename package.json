@@ -1,6 +1,6 @@
 {
   "name": "appx-manifest-version",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Tool to upgrade the version of an Appx Manifest file.",
   "main": "src/index.js",
   "bin": {
