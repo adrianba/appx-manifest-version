@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/adrianba/appx-manifest-version.svg?branch=master)](https://travis-ci.org/adrianba/appx-manifest-version)
 [![Coverage Status](https://coveralls.io/repos/github/adrianba/appx-manifest-version/badge.svg)](https://coveralls.io/github/adrianba/appx-manifest-version)
 [![Dependency Status](https://david-dm.org/adrianba/appx-manifest-version.svg)](https://david-dm.org/adrianba/appx-manifest-version)
+[![Awesome Status](https://adebateman.org/badges/awesome.svg)](https://adebateman.org/)
 
 Tool used to increment the version number of an `AppxManifest.xml` file.
 
